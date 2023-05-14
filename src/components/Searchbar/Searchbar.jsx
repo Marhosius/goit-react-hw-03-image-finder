@@ -1,4 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import Notiflix from 'notiflix';
+import css from "./Searchbar.module.css"
 
 export class Searchbar extends Component {
     state = {
@@ -8,8 +10,15 @@ export class Searchbar extends Component {
     onInputChange = ({ target: { value } }) => this.setState({ value })
 
     submitHandler = (e) => {
+        const { value } = this.state
         e.preventDefault()
-        this.props.onSubmit(this.state.value)
+        if (value.length <= 1) {
+            Notiflix.Notify.warning("use more specifically request", { position: 'center-top' })
+            return
+        }
+        this.props.onSubmit(value)
+        this.setState({ value: "" })
+
     }
 
 
@@ -17,16 +26,16 @@ export class Searchbar extends Component {
 
     render() {
         return (
-            <header className="searchbar">
-                <form className="form" onSubmit={this.submitHandler}>
-                    <button type="submit" className="button">
-                        <span className="button-label">Search</span>
+            <header className={css.Searchbar}>
+                <form className={css.SearchForm} onSubmit={this.submitHandler}>
+                    <button type="submit" className={css.SearchFormButton}>
+                        <span className={css.SearchFormButtonLabel}>Search</span>
                     </button>
 
                     <input
                         onChange={this.onInputChange}
                         value={this.state.value}
-                        className="input"
+                        className={css.SearchFormInput}
                         type="text"
                         autoComplete="off"
                         autoFocus

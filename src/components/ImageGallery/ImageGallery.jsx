@@ -5,6 +5,7 @@ import Button from 'components/Button/Button';
 import Modal from 'components/Modal/Modal';
 import css from "./ImageGallery.module.css";
 import Notiflix from 'notiflix';
+import propTypes from 'prop-types';
 
 export class ImageGallery extends Component {
     state = {
@@ -44,7 +45,7 @@ export class ImageGallery extends Component {
                 console.log(error)
             }
         }
-        Notiflix.Loading.remove()
+        Notiflix.Loading.remove(400)
         return
     }
 
@@ -78,6 +79,10 @@ export class ImageGallery extends Component {
 
         )
     }
+}
+
+ImageGallery.propTypes = {
+    searchingValue: propTypes.string.isRequired,
 }
 
 export default ImageGallery

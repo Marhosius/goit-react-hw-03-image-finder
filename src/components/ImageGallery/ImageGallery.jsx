@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getPhoto } from "../../api/apiFetch";
+import { getPixabay } from "../../api/apiFetch";
 import ImageGalleryItem from 'components/ImageGalleryItem/ImageGalleryItem';
 import Button from 'components/Button/Button';
 import Modal from 'components/Modal/Modal';
@@ -23,7 +23,7 @@ export class ImageGallery extends Component {
         }
         if (prevState.page !== this.state.page) {
             try {
-                const { data } = await getPhoto(this.props.searchingValue, this.state.page);
+                const { data } = await getPixabay(this.props.searchingValue, this.state.page);
                 this.setState(prevState => ({ hits: [...prevState.hits, ...data.hits] }))
                 if (data?.totalHits < ((this.state.hits.length) + 12)) {
                     this.setState({ loadMore: false })
@@ -35,7 +35,7 @@ export class ImageGallery extends Component {
         }
         if (prevProps !== this.props) {
             try {
-                const { data } = await getPhoto(this.props.searchingValue, this.state.page);
+                const { data } = await getPixabay(this.props.searchingValue, this.state.page);
                 this.setState(prevState => ({ hits: [...prevState.hits, ...data.hits] }))
                 if (data.totalHits > 12) {
                     this.setState({ loadMore: true })

@@ -9,7 +9,7 @@ export class ImageGalleryItem extends Component {
     render() {
         return (
             <li className={css.ImageGalleryItem}>
-                <img onClick={this.onImgClick} js={this.props.largeImageURL} src={this.props.webformatURL} className={css.ImageGalleryItemImage} alt="photo" />
+                <img onClick={this.onImgClick} js={this.props.largeImageURL} src={this.props.webformatURL} className={css.ImageGalleryItemImage} alt="" />
             </li>
         )
     }

@@ -7,9 +7,10 @@ export class ImageGalleryItem extends Component {
         this.props.modalTogle()
     }
     render() {
+        const { webformatURL, largeImageURL } = this.props
         return (
             <li className={css.ImageGalleryItem}>
-                <img onClick={this.onImgClick} js={this.props.largeImageURL} src={this.props.webformatURL} className={css.ImageGalleryItemImage} alt="" />
+                <img onClick={this.onImgClick} js={largeImageURL} src={webformatURL} className={css.ImageGalleryItemImage} alt="" />
             </li>
         )
     }

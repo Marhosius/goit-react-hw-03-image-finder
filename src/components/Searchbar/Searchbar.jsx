@@ -8,7 +8,7 @@ export class Searchbar extends Component {
         value: "",
     }
 
-    onInputChange = ({ target: { value } }) => this.setState({ value })
+    onInputChange = ({ target: { value } }) => { if (value.trim()) this.setState({ value }) }
 
     submitHandler = (e) => {
         const { value } = this.state
